@@ -1,0 +1,62 @@
+{
+    "version": 4,
+    "include": [
+        "../../../CMake/arm-gcc.json",
+        "../../../config/user-tools-repos.json",
+        "../../../config/user-prefs.json"
+    ],
+    "configurePresets": [
+        {
+            "name": "CESKDUINO",
+            "inherits": [
+                "arm-gcc-cortex-preset",
+                "user-tools-repos",
+                "user-prefs"
+            ],
+            "hidden": false,
+            "cacheVariables": {
+                "TARGET_BOARD": "${presetName}",
+                "RTOS": "ChibiOS",
+                "TARGET_SERIES": "STM32F4xx",
+                "CHIBIOS_CONTRIB_REQUIRED": "OFF",
+                "STM32_CUBE_PACKAGE_REQUIRED": "OFF",
+                "SUPPORT_ANY_BASE_CONVERSION": "ON",
+                "NF_FEATURE_DEBUGGER": "ON",
+                "NF_FEATURE_RTC": "ON",                
+                "SWO_OUTPUT": "OFF",
+                "NF_BUILD_RTM": "OFF",
+
+                "NF_FEATURE_HAS_SDCARD": "OFF",             
+
+                "NF_NETWORKING_ENC28J60": "OFF",
+                "NF_SECURITY_MBEDTLS": "OFF",
+                "NF_FEATURE_HAS_CONFIG_BLOCK": "OFF",
+                "API_System.Net": "OFF",
+                "API_nanoFramework.Networking.Sntp": "OFF",
+
+                "API_System.Math": "ON",
+                "API_Hardware.Stm32": "ON",
+                "API_System.Device.Gpio": "ON",
+                "API_System.Device.Spi": "ON",
+                "API_System.IO.Ports": "ON",
+                            
+                "API_nanoFramework.ResourceManager": "ON",
+                "API_nanoFramework.System.Collections": "ON",
+                "API_nanoFramework.System.Text": "ON",
+                
+                "API_System.Device.Adc": "OFF",
+                "API_nanoFramework.Device.OneWire": "OFF",
+                "API_System.Device.I2c": "OFF",
+                "API_System.Device.Pwm": "OFF"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "inherits": "base-user",
+            "name": "CESKDUINO",
+            "displayName": "CESKDUINO",
+            "configurePreset": "CESKDUINO"
+        }
+    ]
+}
